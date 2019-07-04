@@ -1,7 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
-
-@connect
+import {add, finish, input} from '../redux/todo';
+@connect(
+    (state)=>{
+        return {
+            todoList: state.todo.todoList,
+            inputText: state.todo.inputText
+        }
+    },
+    {add, finish, input}
+)
 class todoList extends React.Component {
     constructor(props) {
         super(props);
@@ -11,24 +19,30 @@ class todoList extends React.Component {
         this.focusInput();
     }
     addNewTodo = () => {
+        if (this.props.inputText) {
+            this.props.add();
+        }
     }
     handleCheckboxChange = (id) => (e) => {
         if (e.target.checked) { // 
+            this.props.finish(id);
         }
     }
     handleInputChange = (e) => {
+        this.props.input(e.target.value);
     }
     focusInput = () => {
         this.inputRef.current.focus();
     }
     render() {
-        const newTodoList = this.state.todoList.filter(item => !item.finished);
-        const finishTodoList = this.state.todoList.filter(item => item.finished);
+        const newTodoList = this.props.todoList.filter(item => !item.finished);
+        const finishTodoList = this.props.todoList.filter(item => item.finished);
+        const input = this.props.inputText;
         return (
             <div>
                 <div>
                     <input  
-                        value={this.state.input}
+                        value={input}
                         onChange={this.handleInputChange}
                         ref={this.inputRef} 
                         type="text" 
