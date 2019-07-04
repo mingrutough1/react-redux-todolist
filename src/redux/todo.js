@@ -12,15 +12,16 @@ const initState = {
 const todo = (state = initState, action) => {
     switch (action.type) {
         case ADD_TODOLIST:
-            const todoList = state.todoList;
-            todoList.push({
-                finished: false,
-                id: +new Date(),
-                text: state.inputText
-            });
             return {
                 inputText: '',
-                todoList,
+                todoList: [
+                    ...state.todoList,
+                    {
+                        finished: false,
+                        id: +new Date(),
+                        text: state.inputText
+                    }
+                ],
             };
         case FINISH_TODOLIST:
             const list = state.todoList.map(item => {
