@@ -1,0 +1,37 @@
+body{
+  margin: 0;
+}
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 100px;
+  pointer-events: none;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+.App {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  color: white;
+}
+
+.app-input{
+  width: 300px;
+  margin-right: 10px;
+}
+.finished-list li{
+  text-decoration: line-through;
+}
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
