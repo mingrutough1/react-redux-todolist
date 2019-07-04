@@ -1,4 +1,4 @@
-## 实践了redux
+简单的实践了redux。
 ### redux flow
 ![react-redux-flow](https://github.com/mingrutough1/react-redux-todolist/blob/master/src/assets/react-redux-flow.jpg)
 
